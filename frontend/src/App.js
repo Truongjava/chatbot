@@ -6,7 +6,8 @@ function App() {
 
     const sendMessage = async () => {
         if (message.trim() === "") return;
-        const response = await fetch("http://localhost:8000/chat", {
+        // const response = await fetch("http://localhost:8000/chat", {
+        const response = await fetch("https://chatbot-hfwq.onrender.com/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message }),
