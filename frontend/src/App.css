@@ -1,4 +1,3 @@
-/* Toàn bộ giao diện tối */
 body {
   background-color: #121212;
   color: white;
@@ -15,39 +14,37 @@ body {
   justify-content: center;
 }
 
-.logo {
-  width: 150px; 
-  height: 150px;
-  border-radius: 50%;
+.logoContainer {
+  position: fixed; 
+  top: 20px;
+  left: 20px;
+  z-index: 100; 
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
 
-/* Khung chat - To gấp đôi */
 .chatContainer {
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  width: 800px; /* Tăng gấp đôi */
-  height: 600px; /* Thêm chiều cao để cân đối */
+  width: 800px; 
+  height: 600px; 
   max-width: 90%;
   display: flex;
   flex-direction: column;
 }
 
-/* Tiêu đề */
 .title {
   text-align: center;
   margin: 0 0 15px;
   font-size: 1.8em;
 }
 
-/* Khu vực tin nhắn */
 .chatBox {
   flex: 1;
   overflow-y: auto;
@@ -60,7 +57,6 @@ body {
   gap: 8px;
 }
 
-/* Tin nhắn người dùng */
 .message.user {
   align-self: flex-end;
   background-color: #007bff;
@@ -71,7 +67,6 @@ body {
   text-align: right;
 }
 
-/* Tin nhắn bot */
 .message.bot {
   align-self: flex-start;
   background-color: #444;
@@ -81,7 +76,6 @@ body {
   max-width: 70%;
 }
 
-/* Thanh nhập liệu */
 .inputContainer {
   display: flex;
   gap: 10px;
@@ -111,7 +105,6 @@ body {
   cursor: not-allowed;
 }
 
-/* Loading spinner */
 .loadingSpinner {
   display: inline-block;
   width: 14px;
