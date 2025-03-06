@@ -1,39 +1,47 @@
 import React, { useState, useRef, useEffect } from "react";
 import './App.css';
-import logo from './logohuss.jpg';
+import logo from './logohuss.png';
 
 function App() {
     const [message, setMessage] = useState("");
     const [chat, setChat] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
     const chatBoxRef = useRef(null);
 
     const sendMessage = async () => {
-        if (message.trim() === "") return;
+        if (message.trim() === "" || isLoading) return;
 
-        setChat([...chat, { user: message, bot: "Bot đang trả lời..." }]);
+        const userMessage = message;
         setMessage("");
+
+        // Thêm tin nhắn người dùng và tin nhắn tạm chờ của bot
+        setChat(prevChat => [
+            ...prevChat,
+            { sender: "user", message: userMessage },
+            { sender: "bot", message: "Bot đang trả lời..." }
+        ]);
+
         setIsLoading(true);
 
         try {
             const response = await fetch("https://chatbot-hfwq.onrender.com/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message }),
+                body: JSON.stringify({ message: userMessage }),
             });
 
             const data = await response.json();
 
-            setChat((prevChat) => {
+            // Cập nhật tin nhắn bot khi có kết quả
+            setChat(prevChat => {
                 const newChat = [...prevChat];
-                newChat[newChat.length - 1].bot = data.response;
+                newChat[newChat.length - 1].message = data.response;
                 return newChat;
             });
         } catch (error) {
-            setChat((prevChat) => {
+            setChat(prevChat => {
                 const newChat = [...prevChat];
-                newChat[newChat.length - 1].bot = "Bot gặp lỗi, vui lòng thử lại!";
+                newChat[newChat.length - 1].message = "Bot gặp lỗi, vui lòng thử lại sau!";
                 return newChat;
             });
         } finally {
@@ -41,6 +49,7 @@ function App() {
         }
     };
 
+    // Tự động cuộn xuống dưới cùng khi có tin nhắn mới
     useEffect(() => {
         if (chatBoxRef.current) {
             chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
@@ -55,15 +64,14 @@ function App() {
 
             <div className="chatContainer">
                 <h1 className="title">Chatbot Tư Vấn Tuyển Sinh</h1>
+
                 <div className="chatBox" ref={chatBoxRef}>
                     {chat.map((item, index) => (
-                        <div key={index} className="messageContainer">
-                            <div className="botMessage">
-                                <strong>Bot:</strong> {item.bot === "Bot đang trả lời..." ? <span className="spinner"></span> : item.bot}
-                            </div>
-                            <div className="userMessage">
-                                <strong>Bạn:</strong> {item.user}
-                            </div>
+                        <div key={index} className={`message ${item.sender}`}>
+                            {item.sender === "user" ? <strong>Bạn:</strong> : <strong>Bot:</strong>} {item.message}
+                            {isLoading && item.message === "Bot đang trả lời..." && (
+                                <span className="loadingSpinner"></span>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -73,13 +81,13 @@ function App() {
                         type="text"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Nhập câu hỏi..."
+                        placeholder="Nhập câu hỏi và nhấn Enter để gửi..."
                         className="input"
                         onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                         disabled={isLoading}
                     />
                     <button onClick={sendMessage} className="button" disabled={isLoading}>
-                        {isLoading ? <span className="spinner"></span> : "Gửi"}
+                        Gửi
                     </button>
                 </div>
             </div>
