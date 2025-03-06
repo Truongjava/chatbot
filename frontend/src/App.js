@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import './App.css';
-import logo from './logohuss.png';
+import logo from './logohuss.webp';
 
 function App() {
     const [message, setMessage] = useState("");

@@ -15,11 +15,10 @@ body {
   justify-content: center;
 }
 
-/* Logo nhỏ góc trái */
-.logoContainer {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+.logo {
+  width: 150px; 
+  height: 150px;
+  border-radius: 50%;
 }
 
 .logo {
@@ -28,33 +27,37 @@ body {
   border-radius: 50%;
 }
 
-/* Khung chat */
+/* Khung chat - To gấp đôi */
 .chatContainer {
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  width: 400px;
+  width: 800px; /* Tăng gấp đôi */
+  height: 600px; /* Thêm chiều cao để cân đối */
   max-width: 90%;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Tiêu đề */
 .title {
   text-align: center;
   margin: 0 0 15px;
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 /* Khu vực tin nhắn */
 .chatBox {
-  height: 300px;
+  flex: 1;
   overflow-y: auto;
   background-color: #2a2a2a;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 
 /* Tin nhắn người dùng */
@@ -62,9 +65,9 @@ body {
   align-self: flex-end;
   background-color: #007bff;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 15px;
   border-radius: 15px;
-  max-width: 75%;
+  max-width: 70%;
   text-align: right;
 }
 
@@ -73,9 +76,9 @@ body {
   align-self: flex-start;
   background-color: #444;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 15px;
   border-radius: 15px;
-  max-width: 75%;
+  max-width: 70%;
 }
 
 /* Thanh nhập liệu */
@@ -86,7 +89,7 @@ body {
 
 .input {
   flex: 1;
-  padding: 8px;
+  padding: 12px;
   border-radius: 5px;
   border: 1px solid #555;
   background-color: #333;
@@ -94,12 +97,13 @@ body {
 }
 
 .button {
-  padding: 8px 15px;
+  padding: 12px 20px;
   border: none;
   border-radius: 5px;
   background-color: #007bff;
   color: white;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .button:disabled {
@@ -107,11 +111,11 @@ body {
   cursor: not-allowed;
 }
 
-/* Loading spinner khi bot đang trả lời */
+/* Loading spinner */
 .loadingSpinner {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   margin-left: 5px;
   border: 2px solid white;
   border-top: 2px solid transparent;
