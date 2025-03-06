@@ -1,105 +1,126 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Giao diện tổng thể */
 .appContainer {
-  display: flex;
-  height: 100vh;
-  background-color: black;
-  position: relative; /* để chứa logo góc */
-}
-
-/* Logo nằm góc trái trên */
-.logoContainer {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 200px;
-  height: 200px;
-}
-
-.logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%; 
-  background-color: white;
-  border: 2px solid #fff;
-}
-
-
-.chatContainer {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #f0f4f8;
-  padding-left: 100px; 
+  height: 100vh;
+  background-color: #1e1e1e; /* Tối nền */
+  color: #f1f1f1; /* Chữ trắng */
+}
+
+.logoContainer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+/* Khung chat */
+.chatContainer {
+  background-color: #2b2b2b;
+  width: 90%;
+  max-width: 600px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  padding: 15px;
+  margin-top: 60px;
 }
 
 .title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f1f1f1;
 }
 
+/* Khu vực tin nhắn */
 .chatBox {
-  height: 600px;
-  width: 80%;
-  max-width: 1000px;
+  flex: 1;
   overflow-y: auto;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #1e1e1e;
 }
 
+/* Tin nhắn */
 .messageContainer {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
 }
 
 .userMessage {
-  background-color: #d1e7ff;
-  padding: 8px;
-  border-radius: 5px;
-  margin-bottom: 4px;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 60%;
+  align-self: flex-end;
+  text-align: right;
 }
 
 .botMessage {
-  background-color: #e2e3e5;
-  padding: 8px;
-  border-radius: 5px;
+  background-color: #444;
+  color: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 60%;
+  align-self: flex-start;
+  text-align: left;
 }
 
+/* Input và nút gửi */
 .inputContainer {
   display: flex;
-  gap: 10px;
   margin-top: 10px;
-  width: 80%;
-  max-width: 600px;
 }
 
 .input {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 8px;
+  border: 1px solid #555;
   border-radius: 5px;
+  background-color: #2b2b2b;
+  color: #f1f1f1;
 }
 
 .button {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  margin-left: 5px;
+  transition: background-color 0.3s;
 }
 
-.button:hover {
-  background-color: #0056b3;
+.button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* Spinner hiệu ứng */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f1f1f1;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
 }
