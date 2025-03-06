@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './App.css';
-import logo from './logohus.jpg';
+import logo from './logohuss.jpg';
 
 function App() {
     const [message, setMessage] = useState("");
