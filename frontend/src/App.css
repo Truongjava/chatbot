@@ -6,6 +6,7 @@ body {
   padding: 0;
 }
 
+/* Container chính */
 .appContainer {
   display: flex;
   flex-direction: column;
@@ -14,37 +15,42 @@ body {
   justify-content: center;
 }
 
+/* Logo góc trái */
 .logoContainer {
-  position: fixed; 
+  position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 100; 
+  z-index: 100;
 }
 
+/* Logo to trên màn hình lớn */
 .logo {
   width: 200px;
   height: 200px;
   border-radius: 50%;
 }
 
+/* Khung chat chính */
 .chatContainer {
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  width: 800px; 
-  height: 600px; 
+  width: 800px;
+  height: 600px;
   max-width: 90%;
   display: flex;
   flex-direction: column;
 }
 
+/* Tiêu đề */
 .title {
   text-align: center;
   margin: 0 0 15px;
   font-size: 1.8em;
 }
 
+/* Khu vực tin nhắn */
 .chatBox {
   flex: 1;
   overflow-y: auto;
@@ -57,6 +63,7 @@ body {
   gap: 8px;
 }
 
+/* Tin nhắn người dùng */
 .message.user {
   align-self: flex-end;
   background-color: #007bff;
@@ -67,6 +74,7 @@ body {
   text-align: right;
 }
 
+/* Tin nhắn bot */
 .message.bot {
   align-self: flex-start;
   background-color: #444;
@@ -76,6 +84,7 @@ body {
   max-width: 70%;
 }
 
+/* Thanh nhập liệu */
 .inputContainer {
   display: flex;
   gap: 10px;
@@ -105,6 +114,7 @@ body {
   cursor: not-allowed;
 }
 
+/* Loading spinner */
 .loadingSpinner {
   display: inline-block;
   width: 14px;
@@ -120,4 +130,21 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* ✅ Đặc biệt: Khi màn hình nhỏ (điện thoại), thu nhỏ logo và đẩy chat xuống */
+@media (max-width: 600px) {
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .appContainer {
+    padding-top: 120px; /* Chừa khoảng trống tránh logo che */
+  }
+
+  .chatContainer {
+    width: 95%;
+    height: calc(100vh - 160px); /* Co giãn theo chiều cao màn hình */
+  }
 }
