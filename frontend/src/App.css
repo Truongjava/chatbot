@@ -14,22 +14,22 @@
 /* Logo nằm góc trái trên */
 .logoContainer {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 60px;
-  height: 60px;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  height: 200px;
 }
 
 .logo {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 50%; /* làm logo tròn nếu muốn */
-  background-color: white; /* nền trắng nổi bật */
+  border-radius: 50%; 
+  background-color: white;
   border: 2px solid #fff;
 }
 
-/* Chatbox full màn hình bên phải */
+
 .chatContainer {
   flex: 1;
   display: flex;
@@ -37,7 +37,7 @@
   align-items: center;
   justify-content: center;
   background-color: #f0f4f8;
-  padding-left: 100px; /* chừa space tránh logo */
+  padding-left: 100px; 
 }
 
 .title {
