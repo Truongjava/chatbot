@@ -135,12 +135,12 @@ body {
 /* ✅ Đặc biệt: Khi màn hình nhỏ (điện thoại), thu nhỏ logo và đẩy chat xuống */
 @media (max-width: 600px) {
   .logo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
   
   .appContainer {
-    padding-top: 120px; /* Chừa khoảng trống tránh logo che */
+    padding-top: 100px; /* Chừa khoảng trống tránh logo che */
   }
 
   .chatContainer {

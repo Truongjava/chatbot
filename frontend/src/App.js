@@ -63,7 +63,7 @@ function App() {
             </div>
 
             <div className="chatContainer">
-                <h1 className="title">Chatbot Tư Vấn Tuyển Sinh</h1>
+                <h1 className="title">Chatbot tuyển sinh Hus</h1>
 
                 <div className="chatBox" ref={chatBoxRef}>
                     {chat.map((item, index) => (
